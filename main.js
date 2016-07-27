@@ -24,20 +24,19 @@ function generateCssStyle(width, height, whichLoader, fontSize, actualLineHeight
   styleString+= 'background-repeat: repeat-y;';
   styleString+= 'background-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ),';
   var arrayOfLines = [];
-  for(var i = 0; i < height/actualLineHeight; i++){
-    arrayOfLines.push('linear-gradient(lightgray ' + 12  + 'px, transparent 0)');
+  for(var i = 0; i < Math.ceil(height/actualLineHeight); i++){
+    arrayOfLines.push('linear-gradient(lightgray ' + fontSize/2  + 'px, transparent 0)');
   }
-  
   styleString+= arrayOfLines.join(',');
   styleString+=';background-size:50px 100px,';
   arrayOfLines = [];
-  for(var i = 0; i < height/actualLineHeight; i++){
+  for(var i = 0; i < Math.ceil(height/actualLineHeight); i++){
     arrayOfLines.push((width - getRandomInt()) + 'px 200px');
   }
   styleString+= arrayOfLines.join(',');
   styleString+=';background-position:0 0,';
   arrayOfLines = [];
-  for(var i = 0; i < height/actualLineHeight; i++){
+  for(var i = 0; i < Math.ceil(height/actualLineHeight); i++){
     arrayOfLines.push('0px ' + (i*(actualLineHeight)) + 'px');
   }
   styleString+= arrayOfLines.join(',');
@@ -59,5 +58,3 @@ function addStyleString(str) {
   node.innerHTML = str;
   document.body.appendChild(node);
 }
-
-
